@@ -8,6 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,15 +18,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Initialize toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Initialize action button and set onclick listener
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "This is a test onclick listener", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        // Create an onclick listener for the signin button
+        final TextView outputFromUsernamePW = (TextView) findViewById(R.id.outputUserpw);
+        final EditText stringUsername = (EditText) findViewById(R.id.usernameTextfield);
+        final EditText stringPassword = (EditText) findViewById(R.id.passwordTextField);
+        Button signInButton = (Button) findViewById(R.id.signIn);
+
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                outputFromUsernamePW.setText("Hi " + stringUsername.getText()+ ". Your password is: \n"
+                        + stringPassword.getText());
             }
         });
     }
@@ -43,10 +63,21 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        switch(id) {
+            case R.id.action_settings:
+                displaySnackbarMenuItem("Settings");
+                return true;
+            case R.id.action_Home:
+                displaySnackbarMenuItem("Home");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }//end switch
 
-        return super.onOptionsItemSelected(item);
     }
+
+    public void displaySnackbarMenuItem(String str){
+        Snackbar.make(getWindow().getDecorView(), "You pressed "+ str, Snackbar.LENGTH_LONG).show();
+    }
+
 }
