@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Zabbix-to-Outlook-webscrape
-# AndroidTestingApp
-=======
 # AndroidTestingApp
 
 Installed Android Studio and making a simple app.
