@@ -5,5 +5,6 @@ I added onclick listeners for the menu items and sign in button. The signin butt
 ![alt tag](/pictures/signinOnclick.png)
 ![alt tag](/pictures/settingsOnclick.png)
 ![alt tag](/pictures/homeOnclick.png)
+![alt tag](/pictures/actionbuttonOnclick.png)
 
 https://www.youtube.com/watch?v=0-2PgWKjjzs&t=451s
